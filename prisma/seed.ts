@@ -274,7 +274,7 @@ async function main() {
         type: "pll",
       },
     ],
-    skipDuplicates: true, // To avoid errors if some algorithms already exist
+    skipDuplicates: true,
   });
 
   console.log("Algorithms have been seeded.");

@@ -34,7 +34,7 @@ const InitialScreen = () => {
   }
 
   return (
-    <div className="flex flex-col gap-1 items-center justify-center h-screen w-screen relative">
+    <div className="flex flex-col gap-1 items-center justify-center h-screen">
       <h1 className="text-text-green text-8xl font-bold">CUBE SPACE</h1>
       <span className="text-white font-bold text-2xl text-bold">
         WANT TO CUBE?
@@ -42,6 +42,7 @@ const InitialScreen = () => {
           YOU ARE AT THE RIGHT PLACE.
         </span>
       </span>
+      <button onClick={() => router.push("/algorithms")} className="text-white bg-background-green-dark border-[5px] border-text-green rounded-full p-4 mt-2">Algorithms</button>
     </div>
   );
 };

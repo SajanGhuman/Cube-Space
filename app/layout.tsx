@@ -4,6 +4,10 @@ import "./globals.css";
 import { Provider } from "./providers";
 import Cube from "./components/cube";
 import NewLr from "./components/newlr";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
