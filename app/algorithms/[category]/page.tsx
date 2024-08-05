@@ -11,7 +11,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 
-const Algorithms = () => {
+const Algorithms = ({ params }: { params: { category: string } }) => {
+  const category = params.category;
   const [algorithms, setAlgorithms] = useState<Algorithm[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState(0);
@@ -21,20 +22,23 @@ const Algorithms = () => {
   const [sortBy, setSortBy] = useState<"name" | "notation">("name");
 
   useEffect(() => {
-    const fetchAlgorithms = async () => {
-      try {
-        const response = await fetch("/api/algs");
-        const data = await response.json();
-        setAlgorithms(data);
-      } catch (error) {
-        console.error("Failed to fetch algorithms:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (category) {
+      const fetchAlgorithms = async () => {
+        setLoading(true);
+        try {
+          const response = await fetch(`/api/algs?category=${category}`);
+          const data = await response.json();
+          setAlgorithms(data);
+        } catch (error) {
+          console.error("Failed to fetch algorithms:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
-    fetchAlgorithms();
-  }, []);
+      fetchAlgorithms();
+    }
+  }, [category]);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -58,8 +62,10 @@ const Algorithms = () => {
   };
 
   // Filter algorithms based on search query
-  const filteredAlgorithms = algorithms.filter((algorithm) =>
-    algorithm.name.toLowerCase().includes(searchQuery),
+  const filteredAlgorithms = algorithms.filter(
+    (algorithm) =>
+      algorithm.name.toLowerCase().includes(searchQuery) ||
+      algorithm.notation.toLowerCase().includes(searchQuery),
   );
 
   // Sort filtered algorithms based on sort criteria and direction
@@ -78,6 +84,7 @@ const Algorithms = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
+        {" "}
         <div role="status" className="flex flex-col items-center">
           <svg
             aria-hidden="true"
@@ -138,6 +145,7 @@ const Algorithms = () => {
                       >
                         Image
                       </TableCell>
+
                       <TableCell
                         style={{ minWidth: 170, backgroundColor: "#B8BDB5" }}
                       >

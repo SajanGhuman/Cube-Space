@@ -42,7 +42,7 @@ const InitialScreen = () => {
           YOU ARE AT THE RIGHT PLACE.
         </span>
       </span>
-      <button onClick={() => router.push("/algorithms")} className="text-white bg-background-green-dark border-[5px] border-text-green rounded-full p-4 mt-2">Algorithms</button>
+      <button onClick={() => router.push("/category")} className="text-white bg-background-green-dark border-[5px] border-text-green rounded-full p-4 mt-2">Algorithms</button>
     </div>
   );
 };
