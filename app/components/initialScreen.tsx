@@ -10,11 +10,11 @@ const InitialScreen = () => {
     return (
       <div
         role="status"
-        className="flex justify-center items-center h-screen  w-screen"
+        className="flex justify-center items-center h-screen w-screen p-4"
       >
         <svg
           aria-hidden="true"
-          className="w-[80px] h-[80px] text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          className="w-16 h-16 md:w-24 md:h-24 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -34,15 +34,22 @@ const InitialScreen = () => {
   }
 
   return (
-    <div className="flex flex-col gap-1 items-center justify-center h-screen">
-      <h1 className="text-text-green text-8xl font-bold">CUBE SPACE</h1>
-      <span className="text-white font-bold text-2xl text-bold">
+    <div className="flex flex-col gap-4 items-center justify-center h-screen p-4">
+      <h1 className="text-[40px] md:text-9xl text-text-green font-bold text-center">
+        CUBE SPACE
+      </h1>
+      <span className="relative top-[-20px] text-[20px] text-text-green md:text-2xl font-bold text-center">
         WANT TO CUBE?
-        <span className="text-white text-2xl text-bold">
+        <span className="block text-[15px] md:text-2xl text-white font-bold">
           YOU ARE AT THE RIGHT PLACE.
         </span>
       </span>
-      <button onClick={() => router.push("/category")} className="text-white bg-background-green-dark border-[5px] border-text-green rounded-full p-4 mt-2">Algorithms</button>
+      <button
+        onClick={() => router.push("/category")}
+        className="relative top-[-20px] text-white bg-background-green-dark border-[3px] md:border-[5px] border-text-green rounded-full p-4 md:p-6 mt-4 md:mt-6"
+      >
+        Algorithms
+      </button>
     </div>
   );
 };

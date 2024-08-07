@@ -12,6 +12,7 @@ interface ExtendedUser extends NextAuthUser {
   id: string;
   userId: string;
   name: string;
+  gender: string;
 }
 
 export const authOptions: NextAuthOptions = {
@@ -54,17 +55,19 @@ export const authOptions: NextAuthOptions = {
         }
 
         console.log("User authorized:", {
-          id: user.id.toString(), // Convert bigint to string
+          id: user.id.toString(),
           userId: user.user_id,
           email: user.email,
           name: user.name,
+          gender: user.gender,
         });
 
         return {
-          id: user.id.toString(), // Convert bigint to string
+          id: user.id.toString(),
           userId: user.user_id,
           email: user.email,
           name: user.name,
+          gender: user.gender,
         } as ExtendedUser;
       },
     }),
@@ -74,7 +77,6 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-      // Debugging line: Log the session and token
       console.log("Session callback:", { session, token });
 
       return {
@@ -84,6 +86,7 @@ export const authOptions: NextAuthOptions = {
           id: token.id as string,
           userId: token.userId as string,
           name: token.name as string,
+          gender: token.gender as string,
         },
       };
     },
@@ -97,6 +100,7 @@ export const authOptions: NextAuthOptions = {
           id: (user as ExtendedUser).id,
           userId: (user as ExtendedUser).userId,
           name: (user as ExtendedUser).name,
+          gender: (user as ExtendedUser).gender,
         };
       }
       return token;
