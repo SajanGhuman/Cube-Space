@@ -184,7 +184,7 @@ const NewLr = () => {
           </button>
         </div>
       ) : (
-        <div className="w-[80px] bg-background-green">
+        <div className="w-[80px] bg-background-green relative left-[25px] top-[-10px]">
           <div
             className="avatar online placeholder"
             onClick={handleAvatarClick}

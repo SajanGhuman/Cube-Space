@@ -84,7 +84,6 @@ const Algorithms = ({ params }: { params: { category: string } }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        {" "}
         <div role="status" className="flex flex-col items-center">
           <svg
             aria-hidden="true"
@@ -116,7 +115,7 @@ const Algorithms = ({ params }: { params: { category: string } }) => {
           placeholder="Search..."
           value={searchQuery}
           onChange={handleSearchChange}
-          className="rounded-full w-[400px] h-[65px] relative top-5 bg-background-green-dark border-[6px] border-text-green px-6 text-left text-white text-[20px]"
+          className="rounded-full w-[150px] h-[40px] sm:w-[400px] sm:h-[50px] lg:h-[70px] sm:text-[20px] sm:border-[6px] relative top-5 bg-background-green-dark border-[1px] border-text-green px-6 text-left text-white text-[10px]"
         />
       </div>
       <div className="w-screen h-screen flex justify-center items-center">

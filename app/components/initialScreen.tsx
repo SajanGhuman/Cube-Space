@@ -35,18 +35,18 @@ const InitialScreen = () => {
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center h-screen p-4">
-      <h1 className="text-[40px] md:text-9xl text-text-green font-bold text-center">
+      <h1 className="text-[40px] md:text-[80px] text-text-green font-bold text-center sm:text-[70px] lg:text-[90px] xl:text-[100px] 2xl:text-[110px] ">
         CUBE SPACE
       </h1>
-      <span className="relative top-[-20px] text-[20px] text-text-green md:text-2xl font-bold text-center">
+      <span className="relative top-[-20px] text-[20px] sm:top-[-30px] text-text-green md:text-[30px] sm:text-[30px] font-bold text-center lg:text-[40px] xl:text-[50px] 2xl:text-[40px]">
         WANT TO CUBE?
-        <span className="block text-[15px] md:text-2xl text-white font-bold">
+        <span className="block text-[15px] md:text-2xl text-white font-bold sm:text-[20px] lg:text-[30px] xl:text-[40px] 2xl:text-[40px]">
           YOU ARE AT THE RIGHT PLACE.
         </span>
       </span>
       <button
         onClick={() => router.push("/category")}
-        className="relative top-[-20px] text-white bg-background-green-dark border-[3px] md:border-[5px] border-text-green rounded-full p-4 md:p-6 mt-4 md:mt-6"
+        className="relative top-[-20px] text-white bg-background-green-dark border-[3px] sm:top-[-40px] md:border-[5px] border-text-green rounded-full p-4 md:p-6 mt-4 md:mt-6"
       >
         Algorithms
       </button>
