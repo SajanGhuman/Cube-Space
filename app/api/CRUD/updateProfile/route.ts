@@ -43,7 +43,7 @@ export async function PUT(req: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (error) {
+  } catch (error:any) {
     console.error("Error updating user profile: ", error);
     return NextResponse.json(
       { message: "Internal server error", details: error.message },

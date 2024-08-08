@@ -13,7 +13,7 @@ const SignIn = () => {
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const result = await signIn("credentials", {

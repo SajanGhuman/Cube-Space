@@ -20,7 +20,7 @@ const NewLr = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<User>();
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const modalRef = useRef<HTMLDialogElement>(null);
   const editUserProfileModalRef = useRef<HTMLDialogElement>(null);
   const [refresh, setRefresh] = useState(false); // Add this state

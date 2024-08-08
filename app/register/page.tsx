@@ -11,11 +11,10 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const router = useRouter(); // Use the new router from next/navigation
+  const router = useRouter(); 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       const response = await axios.post("api/auth/register", {
         email,
@@ -27,7 +26,7 @@ const Register = () => {
       setTimeout(() => {
         router.push("/signIn");
       }, 1000);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error registering user:", error);
       setError(error.response?.data?.message || "An error occurred");
     }

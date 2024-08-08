@@ -33,7 +33,7 @@ export async function GET(
     };
 
     return NextResponse.json(serializedUser, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error fetching user:", error);
     return NextResponse.json(
       { error: "Error fetching user", details: error.message },

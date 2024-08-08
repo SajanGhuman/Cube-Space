@@ -1,11 +1,15 @@
-import React, { forwardRef, useState, useEffect } from "react";
+import React, { forwardRef, useState, useEffect, RefObject } from "react";
 import { useSession } from "next-auth/react";
 
 interface UserModalProps {
+  ref: RefObject<HTMLDialogElement>;
+  user: User | null; // Change to User | null
   closeModal: () => void;
   openEditModal: () => void;
-  refreshTrigger: boolean; // Add this prop
+  refreshTrigger: boolean;
 }
+
+// Your component definition
 
 interface User {
   id: string;
