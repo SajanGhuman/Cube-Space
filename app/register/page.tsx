@@ -106,7 +106,7 @@ const Register = () => {
           </div>
         )}
         {success && (
-          <p className="mt-2 text-center text-sm text-white bg-text-green px-4 py-3 mt-4">
+          <p className="text-center text-sm text-white bg-text-green px-4 py-3 mt-4">
             {success}
           </p>
         )}
