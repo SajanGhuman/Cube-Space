@@ -167,7 +167,7 @@ const NewLr = () => {
   }
 
   return (
-    <div className="absolute top-4 right-4">
+    <div className="absolute top-4 right-4 z-10">
       {status === "unauthenticated" ? (
         <div className="flex gap-4">
           <button

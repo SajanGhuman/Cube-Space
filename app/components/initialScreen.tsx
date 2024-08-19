@@ -1,8 +1,14 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import useMousePosition from "./useMousePosition";
 
 const InitialScreen = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const { x, y } = useMousePosition();
+  const size = isHovered ? 300 : 40;
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -35,18 +41,46 @@ const InitialScreen = () => {
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center h-screen p-4">
-      <h1 className="text-[40px] md:text-[80px] text-text-green font-bold text-center sm:text-[70px] lg:text-[90px] xl:text-[100px] 2xl:text-[110px] ">
+      <motion.div
+        className="hidden lg:flex absolute top-[-100px] w-full h-full  items-center justify-center text-center text-white text-[70px] font-bold leading-none cursor-default bg-background-green"
+        animate={{
+          WebkitMaskPosition: `${x - size / 2}px ${y - size / 2 + 100}px`,
+          WebkitMaskSize: `${size}px`,
+        }}
+        transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+        style={{
+          WebkitMaskImage: "url('/mask.svg')",
+          WebkitMaskRepeat: "no-repeat",
+          WebkitMaskSize: "400px",
+          backgroundColor: "#5F7470",
+        }}
+      >
+        <p
+          className="max-w-4xl p-10"
+          onMouseEnter={() => {
+            setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+          }}
+        >
+          I AM SO NOOB
+          <br/>
+          I SHOULD CUBE
+        </p>
+      </motion.div>
+      <h1 className="text-5xl md:text-8xl text-text-green font-bold text-center sm:text-7xl lg:text-9xl xl:text-[100px] 2xl:text-[110px]">
         CUBE SPACE
       </h1>
-      <span className="relative top-[-20px] text-[20px] sm:top-[-30px] text-text-green md:text-[30px] sm:text-[30px] font-bold text-center lg:text-[40px] xl:text-[50px] 2xl:text-[40px]">
+      <span className="relative top-[20px] text-2xl sm:top-[10px] text-text-green md:text-3xl sm:text-[30px] font-bold text-center lg:text-4xl xl:text-5xl 2xl:text-[40px]">
         WANT TO CUBE?
-        <span className="block text-[15px] md:text-2xl text-white font-bold sm:text-[20px] lg:text-[30px] xl:text-[40px] 2xl:text-[40px]">
+        <span className="relative top-[10px] block text-lg md:text-2xl text-white font-bold sm:text-[10px] lg:text-[30px] xl:text-[40px] 2xl:text-[40px]">
           YOU ARE AT THE RIGHT PLACE.
         </span>
       </span>
       <button
         onClick={() => router.push("/category")}
-        className="relative top-[-20px] text-white bg-background-green-dark border-[3px] sm:top-[-40px] md:border-[5px] border-text-green rounded-full p-4 md:p-6 mt-4 md:mt-6"
+        className="relative top-[10px] text-white bg-background-green-dark border-3 border-[5px] sm:top-[20px] md:border-5 border-text-green rounded-full p-4 md:p-6 mt-4 md:mt-6"
       >
         Algorithms
       </button>

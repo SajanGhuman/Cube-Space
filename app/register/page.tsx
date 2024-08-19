@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Use the new router from next/navigation
+import { useRouter } from "next/navigation";
 import axios from "axios";
-import Cube from "../components/cube";
+import Button from "../components/button"; // Assuming you have a Button component
+import { ButtonBase } from "@mui/material";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -11,17 +12,12 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const router = useRouter(); 
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("api/auth/register", {
-        email,
-        password,
-        name,
-      });
-
+      await axios.post("/api/auth/register", { email, password, name });
       setSuccess("User created successfully");
       setTimeout(() => {
         router.push("/signIn");
@@ -33,13 +29,20 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
-        <h1 className="text-2xl font-extrabold text-gray-900 text-center">
-          Register
+    <div className="flex justify-center items-center px-4 py-8 min-h-screen">
+      <div className="flex flex-col items-center justify-center border border-text-green space-y-8 p-8 bg-grey rounded-xl shadow-lg sm:w-[500px] md:w-[600px]">
+        <div className="relative mb-4">
+          <img
+            src="/CUBE.png"
+            alt="Cube"
+            className="w-24 h-24 md:w-32 md:h-32"
+          />
+        </div>
+        <h1 className="text-2xl md:text-3xl font-extrabold text-white text-center">
+          Register for an account
         </h1>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
+        <form className="mt-8 space-y-6 w-full" onSubmit={handleSubmit}>
+          <div className="rounded-md shadow-sm space-y-4">
             <div>
               <label htmlFor="email" className="sr-only">
                 Email
@@ -51,7 +54,7 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 border bg-background-green-dark border-text-green placeholder-white text-white focus:outline-none focus:ring-2 focus:ring-orange-500 sm:text-sm"
                 placeholder="Email"
               />
             </div>
@@ -66,7 +69,7 @@ const Register = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 border bg-background-green-dark border-text-green placeholder-white text-white focus:outline-none focus:ring-2 focus:ring-orange-500 sm:text-sm"
                 placeholder="Password"
               />
             </div>
@@ -81,24 +84,31 @@ const Register = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-md block w-full px-3 py-2 border bg-background-green-dark border-text-green placeholder-white text-white focus:outline-none focus:ring-2 focus:ring-orange-500 sm:text-sm"
                 placeholder="Name"
               />
             </div>
           </div>
-
           <button
             type="submit"
-            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+            className="group relative w-full flex justify-center py-2 px-4 border-[2px] border-text-green text-sm font-medium rounded-md text-white bg-background-green-dark hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
           >
             Register
           </button>
         </form>
         {error && (
-          <p className="mt-2 text-center text-sm text-red-600">{error}</p>
+          <div
+            className="z-10 border-1 border-t border-b border-[#EE4B2B] text-[#EE4B2B] px-4 py-3 mt-4"
+            role="alert"
+          >
+            <p className="font-semibold">Error!</p>
+            <p className="text-sm font-semibold">{error}</p>
+          </div>
         )}
         {success && (
-          <p className="mt-2 text-center text-sm text-green-600">{success}</p>
+          <p className="mt-2 text-center text-sm text-white bg-text-green px-4 py-3 mt-4">
+            {success}
+          </p>
         )}
       </div>
     </div>
