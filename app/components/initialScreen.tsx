@@ -42,9 +42,9 @@ const InitialScreen = () => {
   return (
     <div className="flex flex-col gap-4 items-center justify-center h-screen p-4">
       <motion.div
-        className="hidden lg:flex absolute top-[-100px] w-full h-full items-center justify-center text-center text-white text-[70px] font-bold leading-none cursor-default bg-background-green"
+        className="hidden lg:flex absolute top-[-100px] w-full h-full  items-center justify-center text-center text-white text-[70px] font-bold leading-none cursor-default bg-background-green"
         animate={{
-          WebkitMaskPosition: `${x ? -size / 2 : 0}px ${y ? -size / 2 + 100 : 0}px`,
+          WebkitMaskPosition: `${x! - size / 2}px ${y! - size / 2 + 100}px`,
           WebkitMaskSize: `${size}px`,
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
@@ -57,11 +57,16 @@ const InitialScreen = () => {
       >
         <p
           className="max-w-4xl p-10"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onMouseEnter={() => {
+            setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+          }}
         >
           I AM SO NOOB
-          <br />I SHOULD CUBE
+          <br/>
+          I SHOULD CUBE
         </p>
       </motion.div>
       <h1 className="text-5xl md:text-8xl text-text-green font-bold text-center sm:text-7xl lg:text-9xl xl:text-[100px] 2xl:text-[110px]">
